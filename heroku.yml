@@ -1,0 +1,7 @@
+
+build:
+  languages:
+    - go
+
+run:
+  web: go_rest_pg_starter
