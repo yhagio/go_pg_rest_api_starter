@@ -1,36 +1,57 @@
 # Go + Postgres REST API
 
-Reddit like REST API
+CRUD REST API example / starter
+
+- [Go - language](https://golang.org/)
+- [Postgres - Databse](https://www.postgresql.org/)
+- [gorm - Go ORM, Migration tasks](https://github.com/jinzhu/gorm)
+- [Gorilla Mux - Router](https://github.com/gorilla/mux)
 
 ### TODOs
-- [x] User signup
-- [x] User login
-- [x] Test protected route (/secret) that requires user-logged-in
-- [x] Routes path `/api/`
-- [x] Signup notification email
-- [x] Forgot password + reset password via email
+- [x] User Sign Up
+- [x] User Login
+- [x] Protected route (/api/me) User Profile
+- [x] Signup notification email (Mailgun)
+- [x] Forgot password + reset password via email (Mailgun)
 - [x] Post (CRUD)
 
+Future consideration (idea)
 - [ ] Stripe payment integration
-- [ ] Google OAuth
+- [ ] Google, Facebook, etc OAuth
 - [ ] Deployment (i.e. Heroku, Digital Ocean, AWS, GCP)
-- [ ] Admin can delete any posts
+- [ ] Admin tasks
+- [ ] Cron jobs
 
 
 ### curl commands
 
 ```bash
+# Signup
 curl -X "POST" "http://localhost:3000/api/signup" -H 'Content-Type: application/json; charset=utf-8' -d $'{"username":"alice", "email":"alice@example.com", "password":"password123"}'
 
+# Login
 curl -X "POST" "http://localhost:3000/api/login" -H 'Content-Type: application/json; charset=utf-8' -d $'{"email":"alice@example.com", "password":"password123"}'
 
+# User profile
 curl -H "Authorization: Bearer <JWT_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' http://localhost:3000/api/me -w "\n"
 
+# Forgot password
 curl -X "POST" "http://localhost:3000/api/forgot_password" -H 'Content-Type: application/json; charset=utf-8' -d $'{"email":"alice@example.com"}'
 
+# Update / Reset apssword
 curl -X "POST" "http://localhost:3000/api/update_password?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' -d $'{"email":"alice@example.com", "password":"updatedPassword"}'
 
+# Create a post
+curl -X "POST" "http://localhost:3000/api/posts?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' -d $'{"title":"Hello World", "description":"Hello everyone, this is my first post"}'
 
+# Fetch a post
+curl -H 'Content-Type: application/json; charset=utf-8' http://localhost:3000/api/posts/1
+
+# Update a post
+curl -X "PUT" "http://localhost:3000/api/posts/1/update?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' -d $'{"title":"Hello Again", "description":"Hello everyone, this is modified"}'
+
+# Delete a post
+curl -X "DELETE" "http://localhost:3000/api/posts/1/delete?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8'
 ```
 
 ### Environmental Variables (example)
