@@ -7,6 +7,7 @@ import (
 	"go_rest_pg_starter/email"
 	"go_rest_pg_starter/middlewares"
 	"go_rest_pg_starter/models"
+	"os"
 
 	"net/http"
 
@@ -73,6 +74,6 @@ func main() {
 	r.HandleFunc("/posts/{id:[0-9]+}/update", userMW.RequireUser(postsCtrl.Update)).Methods("PUT")
 	r.HandleFunc("/posts/{id:[0-9]+}/delete", userMW.RequireUser(postsCtrl.Delete)).Methods("DELETE")
 
-	fmt.Printf("Starting the server on localhost:%d...\n", config.Port)
-	http.ListenAndServe(fmt.Sprintf(":%d", config.Port), middlewares.PassSignKey(r))
+	fmt.Println("Starting the server on port:" + os.Getenv("PORT"))
+	http.ListenAndServe(fmt.Sprint(":"+os.Getenv("PORT")), middlewares.PassSignKey(r))
 }

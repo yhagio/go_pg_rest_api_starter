@@ -7,11 +7,11 @@ import (
 )
 
 type PostgresConfig struct {
-	Host     string `json:"host"`
-	Port     int    `json:"port"`
-	User     string `json:"user"`
-	Password string `json:"password"`
-	Name     string `json:"name"`
+	Host     string `env:"DB_HOST"`
+	Port     int    `env:"DB_PORT"`
+	User     string `env:"DB_USER"`
+	Password string `env:"DB_PASSWORD"`
+	Name     string `env:"DB_NAME"`
 }
 
 func (c PostgresConfig) Dialect() string {
@@ -53,26 +53,18 @@ func getMailgunConfig() MailgunConfig {
 }
 
 type Config struct {
-	Port       int            `json:"port"`
-	Env        string         `json:"env"`
-	Pepper     string         `json:"pepper"`
-	HMACKey    string         `json:"hmac_key"`
+	Env        string         `env:"APP_ENV"`
+	Pepper     string         `env:"PEPPER"`
+	HMACKey    string         `env:"HMAC_KEY"`
 	Database   PostgresConfig `json:"database"`
 	Mailgun    MailgunConfig  `json:"mailgun"`
-	SigningKey string         `json:"signing_key"`
+	SigningKey string         `env:"signing_key"`
 }
 
 type MailgunConfig struct {
-	APIKey       string `json:"api_key"`
-	PublicAPIKey string `json:"public_api_key"`
-	Domain       string `json:"domain"`
-}
-
-type OAuthConfig struct {
-	ID       string `json:"id"`
-	Secret   string `json:"secret"`
-	AuthURL  string `json:"auth_url"`
-	TokenURL string `json:"token_url"`
+	APIKey       string `env:"MAILGUN_API_KEY"`
+	PublicAPIKey string `env:"MAILGUN_PUBLIC_KEY"`
+	Domain       string `env:"MAILGUN_DOMAIN"`
 }
 
 func (c Config) IsProd() bool {
@@ -80,13 +72,7 @@ func (c Config) IsProd() bool {
 }
 
 func GetConfig() Config {
-	port, err := strconv.Atoi(os.Getenv("APP_PORT"))
-	if err != nil {
-		panic(err)
-	}
-
 	return Config{
-		Port:       port,
 		Env:        os.Getenv("APP_ENV"),
 		Pepper:     os.Getenv("PEPPER"),
 		HMACKey:    os.Getenv("HMAC_KEY"),

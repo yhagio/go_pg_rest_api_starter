@@ -71,5 +71,5 @@ export HAMC_KEY=super-secret-key
 export PEPPER=super-pepper-key
 
 export APP_ENV=development
-export APP_PORT=3000
+export PORT=3000
 ```
