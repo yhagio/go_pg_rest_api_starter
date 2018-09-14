@@ -1,6 +1,13 @@
 # Go + Postgres REST API
 
-CRUD REST API example / starter
+
+### Demo API (Heroku)
+
+https://powerful-oasis-83075.herokuapp.com/api/
+(Mailgun is disabled for demo though)
+
+
+### CRUD REST API example / starter
 
 - [Go - language](https://golang.org/)
 - [Postgres - Databse](https://www.postgresql.org/)
@@ -23,34 +30,34 @@ Future consideration (idea)
 - [ ] Cron jobs
 
 
-### curl commands
+### Available API and curl commands
 
 ```bash
-# Signup
+# Signup /api/signup
 curl -X "POST" "http://localhost:3000/api/signup" -H 'Content-Type: application/json; charset=utf-8' -d $'{"username":"alice", "email":"alice@example.com", "password":"password123"}'
 
-# Login
+# Login /api/login
 curl -X "POST" "http://localhost:3000/api/login" -H 'Content-Type: application/json; charset=utf-8' -d $'{"email":"alice@example.com", "password":"password123"}'
 
-# User profile
+# User profile /api/me
 curl -H "Authorization: Bearer <JWT_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' http://localhost:3000/api/me -w "\n"
 
-# Forgot password
+# Forgot password /api/forgot_password
 curl -X "POST" "http://localhost:3000/api/forgot_password" -H 'Content-Type: application/json; charset=utf-8' -d $'{"email":"alice@example.com"}'
 
-# Update / Reset apssword
+# Update / Reset apssword /api/update_password
 curl -X "POST" "http://localhost:3000/api/update_password?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' -d $'{"email":"alice@example.com", "password":"updatedPassword"}'
 
-# Create a post
+# Create a post /api/posts
 curl -X "POST" "http://localhost:3000/api/posts?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' -d $'{"title":"Hello World", "description":"Hello everyone, this is my first post"}'
 
-# Fetch a post
+# Fetch a post /api/posts/:id
 curl -H 'Content-Type: application/json; charset=utf-8' http://localhost:3000/api/posts/1
 
-# Update a post
+# Update a post /api/posts/:id/update
 curl -X "PUT" "http://localhost:3000/api/posts/1/update?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8' -d $'{"title":"Hello Again", "description":"Hello everyone, this is modified"}'
 
-# Delete a post
+# Delete a post /api/posts/:id/delete
 curl -X "DELETE" "http://localhost:3000/api/posts/1/delete?token=<PROVIDED_TOKEN>" -H 'Content-Type: application/json; charset=utf-8'
 ```
 
