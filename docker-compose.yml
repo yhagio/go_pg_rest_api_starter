@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  appdb:
+    image: 'postgres:10.5'
+    container_name: appdb
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  server:
+    container_name: server
+    restart: always
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    volumes:
+      - .:/app
+    environment:
+      - MAILGUN_APIKEY=key-fsdfsafds239ee5ca2e7cc6cb304038afx
+      - MAILGUN_PUBLIC_KEY=pubdsfafdsfsdfsdfh456517506e2b8ba78b9bb6x
+      - MAILGUN_DOMAIN=x.mailgun.org
+
+      - DB_HOST=appdb
+      - DB_PORT=5432
+      - DB_USER=dev_user
+      - DB_PASSWORD=123test
+      - DB_NAME=pg_start_dev
+
+      - JWT_SIGN_KEY=123devjwtsign
+      - HAMC_KEY=wow-secret-hmac-987
+      - PEPPER=woo-pepper-4567
+
+      - APP_ENV=development
+      - PORT=3000
+
+    ports:
+      - '3000:3000'

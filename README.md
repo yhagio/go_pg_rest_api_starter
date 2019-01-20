@@ -1,11 +1,15 @@
 # Go + Postgres REST API
 
-
 ### Demo API (Heroku)
 
 https://powerful-oasis-83075.herokuapp.com/api/
 (Mailgun is disabled for demo though)
 
+### Start
+
+```
+docker-compose up
+```
 
 ### CRUD REST API example / starter
 
@@ -15,20 +19,22 @@ https://powerful-oasis-83075.herokuapp.com/api/
 - [Gorilla Mux - Router](https://github.com/gorilla/mux)
 
 ### TODOs
+
 - [x] User Sign Up
 - [x] User Login
 - [x] Protected route (/api/me) User Profile
 - [x] Signup notification email (Mailgun)
 - [x] Forgot password + reset password via email (Mailgun)
 - [x] Post (CRUD)
+- [x] Dockerize (development)
 
 Future consideration (idea)
+
 - [ ] Stripe payment integration
 - [ ] Google, Facebook, etc OAuth
 - [ ] Deployment (i.e. Heroku, Digital Ocean, AWS, GCP)
 - [ ] Admin tasks
 - [ ] Cron jobs
-
 
 ### Available API and curl commands
 
@@ -62,6 +68,7 @@ curl -X "DELETE" "http://localhost:3000/api/posts/1/delete?token=<PROVIDED_TOKEN
 ```
 
 ### Environmental Variables (example)
+
 ```bash
 export MAILGUN_APIKEY=key-b9cc7f4l39ee5ca2e7cc6cb89328afd
 export MAILGUN_PUBLIC_KEY=pubkey-123439481f695175063232234hjsdf9
