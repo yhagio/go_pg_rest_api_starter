@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"go_rest_pg_starter/config"
 	"go_rest_pg_starter/controllers"
 	"go_rest_pg_starter/email"
 	"go_rest_pg_starter/middlewares"
 	"go_rest_pg_starter/models"
-	"os"
 
 	"net/http"
 

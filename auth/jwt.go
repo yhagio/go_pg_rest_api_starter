@@ -1,8 +1,9 @@
 package auth
 
 import (
-	"go_rest_pg_starter/models"
 	"time"
+
+	"go_rest_pg_starter/models"
 
 	jwt "github.com/dgrijalva/jwt-go"
 )

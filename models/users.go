@@ -1,8 +1,9 @@
 package models
 
 import (
-	"go_rest_pg_starter/utils"
 	"time"
+
+	"go_rest_pg_starter/utils"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"

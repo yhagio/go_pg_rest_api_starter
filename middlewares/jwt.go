@@ -3,9 +3,10 @@ package middlewares
 import (
 	"context"
 	"fmt"
+	"net/http"
+
 	"go_rest_pg_starter/config"
 	"go_rest_pg_starter/models"
-	"net/http"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"

@@ -2,9 +2,10 @@ package models
 
 import (
 	"errors"
-	"go_rest_pg_starter/utils"
 	"regexp"
 	"strings"
+
+	"go_rest_pg_starter/utils"
 
 	"golang.org/x/crypto/bcrypt"
 )

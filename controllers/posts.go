@@ -2,10 +2,11 @@ package controllers
 
 import (
 	"encoding/json"
-	"go_rest_pg_starter/middlewares"
-	"go_rest_pg_starter/models"
 	"net/http"
 	"strconv"
+
+	"go_rest_pg_starter/middlewares"
+	"go_rest_pg_starter/models"
 
 	"github.com/gorilla/mux"
 )

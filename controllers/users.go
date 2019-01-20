@@ -2,11 +2,12 @@ package controllers
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"go_rest_pg_starter/auth"
 	"go_rest_pg_starter/email"
 	"go_rest_pg_starter/middlewares"
 	"go_rest_pg_starter/models"
-	"net/http"
 )
 
 type UserWithToken struct {
