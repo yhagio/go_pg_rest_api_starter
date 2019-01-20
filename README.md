@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/yhagio/go_pg_rest_api_starter/blob/master/LICENSE)
+
 # Go + Postgres REST API
 
 ### Demo API (Heroku)
