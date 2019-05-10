@@ -2,10 +2,7 @@
 
 # Go + Postgres REST API
 
-### Demo API (Heroku)
 
-https://powerful-oasis-83075.herokuapp.com/api/
-(Mailgun is disabled for demo though)
 
 ### Start
 
